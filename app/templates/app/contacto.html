@@ -1,0 +1,48 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+{% load crispy_forms_tags %}
+
+<br>
+<br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+
+                <h2>Contactanos</h2>
+                <hr>
+                <form action="" class="" method="post">
+                    <!-- importante enviarlo por el metodo post para que no se vean os datos y tener problemas de seguridad.-->
+                
+                    {% csrf_token %} <!--el csrf_token no se podrían ingresar los datos-->
+                   
+                    {{ form | crispy }} <!--Convierte el código python a html e imprime el formulario-->
+                    
+                    
+                    <hr>
+                    <br>
+                    <div class="d-flex justify-content-end"> <!--poner los botones al final-->
+                        <input type="reset" value="Cancelar" class="btn btn-secondary">
+                        &nbsp;
+                        <button type="submit" id="btnEnviar" class="btn btn-primary">Enviar</button>
+                        <!-- El tipo submit es un boton que recarga la página y envía los datos-->
+                    </div>
+                
+                
+                </form>
+                
+                {{mensaje}}
+
+            </div>
+        </div>
+       
+
+    </div>
+</div>
+
+<table id="tablacontactos">
+    
+</table>
+
+{% endblock %}
